@@ -1,4 +1,40 @@
-console.log("formValidation.js loaded");
+// Function to validate the entire form
+function validateForm() {
+    // Validate username
+    var username = document.getElementById('usernameInput').value;
+    var generalError = document.getElementById('generalError');
+    if (!validateUsername(username)) {
+        generalError.textContent = 'Invalid username. Please follow the guidelines.';
+        generalError.style.backgroundColor = 'red';
+        return false;
+    }
+
+    // Email Validation
+    var email = document.getElementById('inputEmail4').value;
+    if (!validateEmailAddressSimple(email)) {
+        generalError.textContent = 'Invalid email. Please follow the guidelines.';
+        generalError.style.backgroundColor = 'red';
+        return false;
+    }
+    return true;
+}
+
+// Function to validate the username
+function validateUsername(username) {
+    // Regex for username validation (example: letters, numbers, underscores, 3-16 characters)
+    var usernameRegex = /^[a-zA-Z0-9_]{3,16}$/;
+    return usernameRegex.test(username);
+}
+
+// Clear error messages on form reset
+document.getElementById('registration-form').onreset = function() {
+    document.getElementById('generalError').textContent = '';
+    document.getElementById('generalError').style.backgroundColor = 'transparent';
+    // Clear other specific error fields as needed
+};
+
+ 
+
 
 /**
  * Validate the email address
