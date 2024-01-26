@@ -4,7 +4,7 @@ function validateForm() {
     var username = document.getElementById('usernameInput').value;
     var generalError = document.getElementById('generalError');
     if (!validateUsername(username)) {
-        generalError.textContent = 'Invalid username. Please follow the guidelines.';
+        generalError.textContent = 'Invalid username. Username must be between 3 to 16 characters long.';
         generalError.style.backgroundColor = 'red';
         return false;
     }
@@ -12,7 +12,7 @@ function validateForm() {
     // Email Validation
     var email = document.getElementById('inputEmail4').value;
     if (!validateEmailAddressSimple(email)) {
-        generalError.textContent = 'Invalid email. Please follow the guidelines.';
+        generalError.textContent = 'Invalid email. Must be in format xxx@xxx.com.';
         generalError.style.backgroundColor = 'red';
         return false;
     }
