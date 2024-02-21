@@ -4,10 +4,10 @@ console.log("xhr_script.js loaded");
 let btn_xhr = $('#xhrJoke');
 
 // create a url variable
-let url = "https://icanhazdadjoke.com/";
+let url_xhr = "https://icanhazdadjoke.com/";
 
 // create a click callback that handles the API call
-$(btn_xhr).click(() => {
+$(btn_xhr).on('click', (() => {
     console.log("xhr button clicked");
     // create a new XMLHttpRequest object
     let xhr = new XMLHttpRequest();
@@ -16,14 +16,14 @@ $(btn_xhr).click(() => {
     xhr.setRequestHeader("Accept", "application/json");
     // create the callback
     xhr.onreadystatechange = () => {
-        if (xhr.readyState === 4 && xhr.status === 200) {
-            let joke = JSON.parse(xhr.responseText);
-            console.log(joke);
-            $('#xhrOutput').text(joke.joke);
+        if (xhr.readyState === XMLHttpRequest.DONE && xhr.status === 200) {
+            let res = JSON.parse(xhr.responseText);
+            console.log(res);
+            // set the output
+            $('#output').text(res.joke);
         }
     };
     // send the request
     xhr.send();
-
-});
+}));
 
