@@ -1,0 +1,10 @@
+extends index.pug
+
+block content
+  h1 Page 2
+  p Welcome to Page 2. Please submit the form.
+  form(action="/submit-form" method="post")
+    div.form-group
+      label(for="exampleInput") Example Input
+      input(type="text" name="exampleInput" id="exampleInput" required)
+    button(type="submit" class="btn btn-primary") Submit
